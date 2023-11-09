@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: radial-gradient(ellipse at bottom, #0D1E31, #111);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden; /* Prevents scrollbars */
+        }
+
+        .container {
+            text-align: center;
+            background-color: radial-gradient(ellipse at bottom, #0D1E31, #111);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px;
+        }
+
+        p {
+            color: #777;
+            font-size: 18px;
+        }
+
+        #countdown {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+      
+    <div class="container">
+        <h1>Coming Soon!</h1>
+        <p>We are working on something amazing and exciting for you.</p>
+        <div id="countdown">Launching in: <span id="timer"></span></div>
+    </div>
+
+    <script>
+        // Set the launch date and time
+        const launchDate = new Date("2023-12-31 00:00:00").getTime();
+
+        // Update the countdown every second
+        const timer = setInterval(function () {
+            const currentDate = new Date().getTime();
+            const timeRemaining = launchDate - currentDate;
+
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (timeRemaining < 0) {
+                clearInterval(timer);
+                document.getElementById("timer").innerHTML = "Now Live!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

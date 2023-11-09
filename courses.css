@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #1e1f26;
+  }
+  
+  /* CSS Variables */
+  :root {
+    --navbar-height: 59px;
+  }
+  
+  /* Navigation Bar */
+  #navbar {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  
+  }
+  
+  #navbar::before {
+    content: "";
+    background-color: #1e1f26;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+  
+  /* Navigation Bar: Logo and Image */
+  #header {
+    margin: 10px 22px;
+    color: #03dac6;
+  }
+  
+  #header h1 {
+    height: 23px;
+  }
+  
+  .header {
+    background-color: #1e1f26;
+    color: #03dac6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-family: sans-serif;
+    font-weight: 900;
+  }
+  
+  .header:hover {
+    color: #ff0266;
+  }
+  
+  .key {
+    font-size: 35px;
+    display: inline-block;
+    letter-spacing: 0vw;
+    transition: transform 0.2s;
+  }
+  
+  
+  
+  @keyframes pressDown1 {
+  
+    30%,
+    40%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    35% {
+      transform: translateY(10px);
+    }
+  }
+  
+  @keyframes pressDown2 {
+  
+    70%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    75% {
+      transform: translateY(10px);
+    }
+  }
+  
+  @keyframes pressDown3 {
+  
+    30%,
+    40%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    35% {
+      transform: translateY(10px);
+    }
+  }
+  
+  @keyframes pressDown4 {
+  
+    40%,
+    50%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    45% {
+      transform: translateY(10px);
+    }
+  }
+  
+  @keyframes pressDown5 {
+  
+    20%,
+    30%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    25% {
+      transform: translateY(10px);
+    }
+  }
+  
+  @keyframes pressDown6 {
+  
+    60%,
+    70%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    65% {
+      transform: translateY(10px);
+    }
+  }
+  
+  @keyframes pressDown7 {
+  
+    10%,
+    20%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    15% {
+      transform: translateY(10px);
+    }
+  }
+  
+  @keyframes pressDown8 {
+  
+    35%,
+    45%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    40% {
+      transform: translateY(10px);
+    }
+  }
+  
+  @keyframes pressDown9 {
+  
+    10%,
+    20%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    15% {
+      transform: translateY(10px);
+    }
+  }
+  
+  .key:nth-child(1) {
+    animation: pressDown1 2s infinite;
+  }
+  
+  .key:nth-child(2) {
+    animation: pressDown2 3s infinite;
+  }
+  
+  .key:nth-child(3) {
+    animation: pressDown3 4s infinite;
+  }
+  
+  .key:nth-child(4) {
+    animation: pressDown4 2.5s infinite;
+  }
+  
+  .key:nth-child(5) {
+    animation: pressDown5 2.5s infinite;
+  }
+  
+  .key:nth-child(6) {
+    animation: pressDown6 3.5s infinite;
+  }
+  
+  .key:nth-child(7) {
+    animation: pressDown7 2.2s infinite;
+  }
+  
+  .key:nth-child(8) {
+    animation: pressDown8 3.2s infinite;
+  }
+  
+  .key:nth-child(9) {
+    animation: pressDown8 3.2s infinite;
+  }
+  
+  
+  /* Navigation Bar: List Styling */
+  
+  #navbar ul {
+    display: flex;
+    font-family: sans-serif;
+  }
+  
+  #navbar ul li {
+    list-style: none;
+    font-size: 1.3rem;
+  }
+  
+  #navbar ul li a {
+    color: white;
+    display: block;
+    padding: 3px 7px;
+    border-radius: 20px;
+    text-decoration: none;
+  }
+  
+  #navbar ul li a:hover {
+    color: #ff0266;
+  }
+  
+  .subjects {
+    background-color: #1e1f26;
+    color: #03dac6;
+    display: flex;
+    margin: 25;
+    height: 45px;
+    font-size: 30;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    font-family: sans-serif;
+    font-weight: 900;
+  }
+  
+  .container {
+    display: flex;
+    overflow: hidden;
+    width: auto;
+    justify-content: center;
+  
+  }
+  
+  .cards {
+    display: flex;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    color: #ff0266;
+  }
+  
+  
+  .card {
+    width: 200px;
+    height: 260px;
+    margin: 20px;
+    background-color: #1e1f26;
+    color: #03dac6;
+    text-align: center;
+    line-height: 470px;
+    font-size: 24px;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  }
+  
+  footer {
+    text-align: center;
+    background-color: #1e1f26;
+    overflow: hidden;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    margin-top: 50;
+  
+  }
+  
+  footer a {
+    text-decoration: none;
+    padding: 20px;
+    text-align: center;
+    float: left;
+    color: white;
+  }
+  
+  
+ 
+  

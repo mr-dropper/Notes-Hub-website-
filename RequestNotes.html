@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Request Notes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1f26;
+            color: #333;
+        }
+
+        .header {
+            background-color: #1e1f26;
+            box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 610px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        h1, h2 {
+            color: #3498db;
+        }
+        
+        #requestForm {
+            text-align: center;
+        }
+
+        #topic {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #submitBtn {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #requestList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #requestList li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #contactInfo {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #contactInfo p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Request Notes</h1>
+    </div>
+
+    <div class="container">
+        <h2>Submit a Request</h2>
+        <div id="requestForm">
+            <input type="text" id="topic" placeholder="Enter a topic">
+            <button id="submitBtn" onclick="submitRequest()">Submit</button>
+        </div>
+
+        <h2>Requests</h2>
+        <ul id="requestList">
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Contact Information</h2>
+        <div id="contactInfo">
+            <p>Contact me directly through:</p>
+            <p>Email: kartikeyasingh185@gmail.com</p>
+            <p>Phone: +91-89231-69917</p>
+            <a href="html.html">Go Back to Notes Hub</a>
+        </div>
+    </div>
+
+    <script>
+        function submitRequest() {
+            var topicInput = document.getElementById("topic");
+            var topic = topicInput.value;
+
+            if (topic) {
+                var requestList = document.getElementById("requestList");
+                var listItem = document.createElement("li");
+                listItem.textContent = topic;
+                requestList.appendChild(listItem);
+
+                // Store requests in local storage
+                var requests = localStorage.getItem("requests");
+                if (!requests) {
+                    requests = [];
+                } else {
+                    requests = JSON.parse(requests);
+                }
+                requests.push(topic);
+                localStorage.setItem("requests", JSON.stringify(requests));
+
+                // Optionally, you can clear the input field after submission.
+                topicInput.value = "";
+            }
+        }
+
+        // Load requests from local storage on page load
+        function loadRequests() {
+            var requests = localStorage.getItem("requests");
+            if (requests) {
+                requests = JSON.parse(requests);
+                var requestList = document.getElementById("requestList");
+                requests.forEach(function (topic) {
+                    var listItem = document.createElement("li");
+                    listItem.textContent = topic;
+                    requestList.appendChild(listItem);
+                });
+            }
+        }
+
+        window.onload = loadRequests;
+    </script>
+</body>
+</html>

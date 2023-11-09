@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1f26;
+            color: #3498db;
+            margin: 0;
+            padding: 0;
+        }
+        
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #1e1f26;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+
+        }
+
+        textarea {
+            height: 150px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #notes {
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button id="submit-button" type="button">Submit</button>
+        </form>
+
+        <div id="notes">
+            <h2>Notes:</h2>
+            <ul id="note-list"></ul>
+        </div>
+
+        <a href="html.html">Go Back to Notes Hub</a>
+    </div>
+
+    <script>
+        document.getElementById("submit-button").addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            const notesContainer = document.getElementById("note-list");
+            const newNote = document.createElement("li");
+            newNote.textContent = `Name: ${name}, Email: ${email}, Message: ${message}`;
+            notesContainer.appendChild(newNote);
+
+            // Save the note to localStorage
+            const notes = JSON.parse(localStorage.getItem("notes")) || [];
+            notes.push(newNote.textContent);
+            localStorage.setItem("notes", JSON.stringify(notes));
+
+            // Clear form fields after submission
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("message").value = "";
+        });
+
+        // Load saved notes when the page loads
+        window.addEventListener("load", function () {
+            const notesContainer = document.getElementById("note-list");
+            const notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+            for (const note of notes) {
+                const newNote = document.createElement("li");
+                newNote.textContent = note;
+                notesContainer.appendChild(newNote);
+            }
+        });
+    </script>
+</body>
+
+</html>
